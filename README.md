@@ -28,24 +28,25 @@ The implementation is intentionally framed as a portfolio and learning project, 
 	5.	Query endpoints return the current aircraft track or incident status.
 	
 ## Repository structure
-	├── README.md
-	├── template.yaml
-	├── samconfig.toml
-	├── src/
-	├── docs/
-	│   ├── charter.md
-	│   ├── project-management-plan.md
-	│   ├── wbs.md
-	│   ├── schedule.md
-	│   ├── risk-register.md
-	│   ├── communications-plan.md
-	│   ├── architecture.md
-	│   ├── api-spec.md
-	│   ├── pmi-principles-traceability.md
-	│   └── lessons-learned.md
-	└── .github/
-    └── workflows/
-        └── deploy.yml
+	aircraft-track-fusion-aws/
+		├── .github/
+		│   └── workflows/
+		│       └── deploy.yml
+		├── docs/
+		│   ├── architecture.md
+		│   └── deployment.md
+		├── events/
+		│   └── sample-observation.json
+		├── src/
+		│   ├── api/
+		│   │   └── app.py
+		│   ├── fusion/
+		│   │   └── app.py
+		│   └── ingest/
+		│       └── app.py
+		├── README.md
+		├── samconfig.toml
+		└── template.yaml
 
 ## Project management approach
 
