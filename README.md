@@ -23,6 +23,7 @@ Initial workflow
 	3.	The fusion logic updates the latest aircraft track in DynamoDB.
 	4.	EventBridge distributes state-change events to downstream consumers.
 	5.	Query endpoints return the current aircraft track or incident status.
+	
 Repository structure
 ├── README.md
 ├── template.yaml
