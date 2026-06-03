@@ -1,58 +1,63 @@
-A serverless backend prototype for tracking distressed or unresponsive aircraft over oceanic airspace using AWS free-tier services. This project uses AWS SAM, API Gateway, Lambda, DynamoDB, EventBridge, and GitHub Actions to ingest simulated sensor observations, fuse them into a current track view, and expose simple CRUD-style APIs for querying aircraft and incident state.
 
-Overview
-This repository demonstrates how to design and deploy a cloud-native backend for a safety-critical tracking scenario where an aircraft may be operating over the Pacific with degraded communications and limited ground radar coverage. The implementation is intentionally framed as a portfolio and learning project, combining AWS serverless architecture, CI/CD automation, and PMI-style project documentation in one repository.
-Objectives
-	•	Build a working serverless backend using AWS SAM and AWS Free Tier friendly services.
-	•	Deploy the application from GitHub to AWS using GitHub Actions.
-	•	Store and retrieve aircraft track and incident data using CRUD-style APIs.
-	•	Document the project using project management artifacts aligned to PMI principles.
-	•	Create a portfolio-ready example that demonstrates architecture, planning, and delivery discipline.
-Architecture
-The backend is designed around a lightweight serverless pattern:
-	•	API Gateway HTTP API for HTTPS endpoints.
-	•	AWS Lambda for ingestion, fusion, retrieval, and notification logic.
-	•	Amazon DynamoDB for current aircraft track state and incident records.
-	•	Amazon EventBridge for event-driven fan-out and workflow decoupling.
-	•	Amazon S3 for optional archival of raw observation payloads and reports.
-	•	Amazon CloudWatch for logs, metrics, and operational visibility tied to Lambda and API activity.
-	•	GitHub Actions for CI/CD deployment of the SAM stack into AWS.
-Initial workflow
+## Overview
+This repository demonstrates how to design and deploy a cloud-native backend for a safety-critical tracking scenario where an aircraft may be operating over the Pacific with degraded communications and limited ground radar coverage.
+The implementation is intentionally framed as a portfolio and learning project, combining AWS serverless architecture, CI/CD automation, and PMI-style project documentation in one repository.
+
+## Objectives
+	- Build a working serverless backend using AWS SAM and AWS Free Tier friendly services. 
+	- Deploy the application from GitHub to AWS using GitHub Actions. 
+	- Store and retrieve aircraft track and incident data using CRUD-style APIs. 
+    - Document the project using project management artifacts aligned to PMI principles. 
+	- Create a portfolio-ready example that demonstrates architecture, planning, and delivery discipline.
+	
+## Architecture 
+	The backend is designed around a lightweight serverless pattern:
+	- API Gateway HTTP API for HTTPS endpoints.
+	- AWS Lambda for ingestion, fusion, retrieval, and notification logic.
+	- Amazon DynamoDB for current aircraft track state and incident records.
+	- Amazon EventBridge for event-driven fan-out and workflow decoupling.
+	- Amazon S3 for optional archival of raw observation payloads and reports.
+	- Amazon CloudWatch for logs, metrics, and operational visibility tied to Lambda and API activity.
+	- GitHub Actions for CI/CD deployment of the SAM stack into AWS.
+	
+## Initial workflow
 	1.	A simulated sensor observation is sent to the API.
 	2.	A Lambda function validates and stores the event.
 	3.	The fusion logic updates the latest aircraft track in DynamoDB.
 	4.	EventBridge distributes state-change events to downstream consumers.
 	5.	Query endpoints return the current aircraft track or incident status.
 	
-Repository structure
-├── README.md
-├── template.yaml
-├── samconfig.toml
-├── src/
-├── docs/
-│   ├── charter.md
-│   ├── project-management-plan.md
-│   ├── wbs.md
-│   ├── schedule.md
-│   ├── risk-register.md
-│   ├── communications-plan.md
-│   ├── architecture.md
-│   ├── api-spec.md
-│   ├── pmi-principles-traceability.md
-│   └── lessons-learned.md
-└── .github/
+## Repository structure
+	├── README.md
+	├── template.yaml
+	├── samconfig.toml
+	├── src/
+	├── docs/
+	│   ├── charter.md
+	│   ├── project-management-plan.md
+	│   ├── wbs.md
+	│   ├── schedule.md
+	│   ├── risk-register.md
+	│   ├── communications-plan.md
+	│   ├── architecture.md
+	│   ├── api-spec.md
+	│   ├── pmi-principles-traceability.md
+	│   └── lessons-learned.md
+	└── .github/
     └── workflows/
         └── deploy.yml
 
-Project management approach
+## Project management approach
+
 This repository is also structured as a PMP-aligned case study. The project artifacts are intended to show how PMI-style project planning can be applied to a real technical build through a charter, scope definition, work breakdown structure, risk register, schedule, stakeholder communication approach, and lessons learned documentation.
+	
 The GitHub repository supports both technical delivery and project management discipline by using Markdown documentation, Issues, Milestones, and GitHub Projects to track scope, tasks, and progress. GitHub recommends using repository READMEs, issue breakdown, project descriptions, and status updates to share work clearly across a project.
 
-Getting started
-Prerequisites
+## Getting started
+	Prerequisites
 	•	AWS account with Free Tier access and an IAM user with programmatic credentials configured for deployment.
 	•	Git installed locally for source control and repository operations.
 	•	AWS CLI installed and configured locally.
 	•	AWS SAM CLI installed locally.
 	•	A GitHub repository for source control and CI/CD workflow execution.
-Local setup
+	Local setup
