@@ -61,4 +61,13 @@ The GitHub repository supports both technical delivery and project management di
 	•	AWS CLI installed and configured locally.
 	•	AWS SAM CLI installed locally.
 	•	A GitHub repository for source control and CI/CD workflow execution.
-	Local setup
+	
+## Set secrets in your GitHub Repo
+
+	Now wire those values into GitHub as secrets so the  configure-aws-credentials  action can read them.
+	-	In GitHub, go to your repo → Settings → Secrets and variables → Actions.
+	-	Click “New repository secret” and create:
+	-	Name:  AWS_ROLE_TO_ASSUME 
+	-	Value: paste your role ARN, for example: arn:aws:iam::123456789012:role/github-actions-aircraft-track-fusion 
+	-	Name:  AWS_REGION 
+	-	Value: your region string, e.g.: us-east-1  or  us-west-2 
