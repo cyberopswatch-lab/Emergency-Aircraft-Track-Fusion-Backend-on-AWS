@@ -8,7 +8,7 @@ parallel = true
 stack_name = "aircraft-track-fusion"
 resolve_s3 = false
 s3_prefix = "aircraft-track-fusion"
-region = "us-east-1"
+region = "us-east-2"
 confirm_changeset = false
 capabilities = "CAPABILITY_IAM"
 parameter_overrides = "StageName=dev"
